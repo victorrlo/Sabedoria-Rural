@@ -1,0 +1,21 @@
+@layout('layouts/main')
+
+@section('content')
+
+  <div class="flex w-full max-w-7xl mx-auto">
+    <div class="flex flex-col gap-6 mt-10">
+      <div class="text-amber-950 text-7xl font-semibold text-primary-900">
+        Descubra
+      </div>
+      <p class="text-amber-950 text-sm text-primary-700">
+        Leia sobre todo tipo de conteúdo criado pelos Ruralinos.
+      </p>
+      <div>
+        @form.button({ href: '/' })
+          Comece a sua jornada do conhecimento!
+        @end
+      </div>
+    </div>
+  </div>
+
+@end
