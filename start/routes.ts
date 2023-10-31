@@ -49,10 +49,13 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/', 'UsersController.index').as('index')
     Route.get('/new', 'UsersController.create').as('create')
+    Route.get('/login', 'UsersController.login').as('login')
     Route.post('/', 'UsersController.store').as('store')
     Route.get('/:id/update', 'UsersController.update').as('update')
     Route.patch('/:id', 'UsersController.patch').as('patch')
     Route.get('/:id', 'UsersController.show').as('show')
+
+    
   })
     .prefix('/users')
     .as('users')

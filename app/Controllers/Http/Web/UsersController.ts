@@ -1,23 +1,33 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import UserService from 'App/Services/UserService'
+import CreateUserValidator from 'App/Validators/CreateUserValidator'
 
 export default class UsersController {
   public async create({ view }: HttpContextContract) {
     return view.render('users/create')
   }
 
-  public async store({ request, response }: HttpContextContract) {
-    const email = request.input('email', undefined)
-    const password = request.input('password', undefined)
+  public async login({view}: HttpContextContract){
+    return view.render('users/login')
 
-    if (!email || !password) {
+  }
+
+  public async store({ request, response }: HttpContextContract) {
+   
+    //const name = request.input('name', undefined)
+    //const email = request.input('email', undefined)
+    //const password = request.input('password', undefined)
+    const payload = await request.validate(CreateUserValidator)
+
+    
+   /* if (!email || !password || !name) {
       response.status(400)
       return response
-    }
+    }*/
 
     const userService = new UserService()
-    const user = await userService.create(email, password)
+    const user = await userService.create(payload.name,payload.email,payload.password)
 
     return response.redirect().toRoute('users.show', { id: user.id })
   }
@@ -53,4 +63,6 @@ export default class UsersController {
 
     return view.render('users/index', { users: users })
   }
+
+ 
 }

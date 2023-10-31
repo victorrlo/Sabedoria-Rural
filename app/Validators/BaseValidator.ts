@@ -12,5 +12,6 @@ export default class BaseValidator {
     range: 'O valor está fora da faixa do campo',
     exists: 'O valor não foi encontrado',
     confirmed: 'Não conferem os valores',
+    regex: 'O campo foi preenchido incorretamente',
   }
 }
