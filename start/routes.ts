@@ -21,9 +21,11 @@
 import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-Route.get('/', async ({ view }: HttpContextContract) => {
+//Vai pro controller da index pra eu exibir os posts na index rs
+Route.get("/", "HomeController.index").as('home.index');
+/*Route.get('/', async ({ view }: HttpContextContract) => {
   return view.render('home/show')
-}).as('home.show')
+}).as('home.show')*/
 
 // Route.group(() => {
 //   Route.group(() => {

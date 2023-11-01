@@ -2,6 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import UserService from 'App/Services/UserService'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
+import Hash from '@ioc:Adonis/Core/Hash'
 
 export default class UsersController {
   public async create({ view }: HttpContextContract) {
@@ -13,7 +14,7 @@ export default class UsersController {
 
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({view, request, response }: HttpContextContract) {
    
     //const name = request.input('name', undefined)
     //const email = request.input('email', undefined)
@@ -25,11 +26,20 @@ export default class UsersController {
       response.status(400)
       return response
     }*/
-
+    
     const userService = new UserService()
-    const user = await userService.create(payload.name,payload.email,payload.password)
-
+    const user = await userService.create(payload.username, payload.name, payload.email, payload.password)
+    
     return response.redirect().toRoute('users.show', { id: user.id })
+    
+    
+    
+   /* if (await Hash.verify(user.password, 'payload.password')) {
+      console.log('são senhas iguais')
+    }else{
+      console.log('são senhas diferentes')
+    }*/
+
   }
 
   public async show({ params, view }: HttpContextContract) {

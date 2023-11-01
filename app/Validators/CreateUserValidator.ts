@@ -8,6 +8,12 @@ export default class CreateUserValidator extends BaseValidator {
   }
 
   public schema = schema.create({
+    username: schema.string([
+      rules.minLength(2),
+      rules.maxLength(20),
+      rules.trim(),
+      rules.unique({ table: 'users', column: 'username' })
+    ]),
     name: schema.string([
       rules.minLength(2),
       rules.maxLength(200),
@@ -15,7 +21,7 @@ export default class CreateUserValidator extends BaseValidator {
     ]),
     email: schema.string([
       rules.regex(/\S+@\S+\.\S+/),
-
+      rules.unique({ table: 'users', column: 'email' })
     ]),
 
     password: schema.string([
