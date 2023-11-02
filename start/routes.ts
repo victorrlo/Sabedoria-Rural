@@ -21,9 +21,11 @@
 import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-Route.get('/', async ({ view }: HttpContextContract) => {
+//Vai pro controller da index pra eu exibir os posts na index rs
+Route.get("/", "HomeController.index").as('home.index');
+/*Route.get('/', async ({ view }: HttpContextContract) => {
   return view.render('home/show')
-}).as('home.show')
+}).as('home.show')*/
 
 // Route.group(() => {
 //   Route.group(() => {
@@ -49,10 +51,13 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/', 'UsersController.index').as('index')
     Route.get('/new', 'UsersController.create').as('create')
+    Route.get('/login', 'UsersController.login').as('login')
     Route.post('/', 'UsersController.store').as('store')
     Route.get('/:id/update', 'UsersController.update').as('update')
     Route.patch('/:id', 'UsersController.patch').as('patch')
     Route.get('/:id', 'UsersController.show').as('show')
+
+    
   })
     .prefix('/users')
     .as('users')
