@@ -2,4 +2,7 @@
 
 @section('content')
   LISTANDO POSTS
+  @if(auth.isLoggedIn)
+    <p>E-mail: {{auth.user.email}}</p>
+  @endif
 @end

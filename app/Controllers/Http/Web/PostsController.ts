@@ -6,12 +6,13 @@ import CreatePostValidator from 'App/Validators/CreatePostValidator'
 
 export default class PostsController {
   public async create({ view }: HttpContextContract) {
+   
     return view.render('posts/create')
   }
 
   public async store({ request, response }: HttpContextContract) {
     const payload = await request.validate(CreatePostValidator)
-
+    //criar post ainda tá criando só de um id, depois eu mudo
     //TODO: Pegar o usuario logado
     const user = await User.findOrFail(1)
 
@@ -33,7 +34,9 @@ export default class PostsController {
 
   public async patch({}: HttpContextContract) {}
 
-  public async index({ view }: HttpContextContract) {
+  public async index({auth, view }: HttpContextContract) {
+   //await auth.use('web').authenticate()
+    //console.log(auth.user)
     return view.render('posts/index')
   }
 }

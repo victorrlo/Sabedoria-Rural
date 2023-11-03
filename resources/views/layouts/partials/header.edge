@@ -10,9 +10,22 @@
       @form.button({ href: route('posts.index') })
         Comece aqui
       @end
-      @form.button({ href: route('users.login') })
-        Entrar
-      @end
+      
+      @if(!auth.isLoggedIn)
+        @form.button({ href: route('sessions.create') })
+          Entrar
+        @end  
+      @else 
+        
+        @form.button({ href: route('sessions.delete') })
+        Sair
+        @end  
+
+        
+        @form.button({ href: route('users.update',{id:auth.user.id}) })
+        Atualizar Cadastro
+        @end  
+      @endif
     </nav>
   </div>
 </header>

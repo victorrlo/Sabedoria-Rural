@@ -7,8 +7,10 @@ export default class HomeController {
     public async index({ view }: HttpContextContract) {
         
         //const post = await Post.all()
-        //Pega os 3 post mais recentes criados no BD para exibir na página inicial
+       // Pega os 3 post mais recentes criados no BD para exibir na página inicial
         const post = await Post.query().orderBy('created_at', 'desc').limit(3)
         return view.render('home/show', {post:post})
-      }
+    }
+
+    
 }

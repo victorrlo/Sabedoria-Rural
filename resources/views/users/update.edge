@@ -4,21 +4,42 @@
   <p>
     Atualize o usuário
   </p>
-  <form action="{{ route('users.patch', { id: user.id }, { qs: { _method: 'PATCH' }}) }}" method="POST">
-    <div>
-      <label>
-        Email:
-      </label>
-      <input type="email" name="email" placeholder="Email" value="{{ user.email }}" />
-    </div>
-    <div>
-      <label>
-        Senha:
-      </label>
-      <input type="password" name="password" placeholder="Senha" />
-    </div>
-    <button type="submit">
-      Atualizar
-    </button>
-  </form>
+  <div class="w-full max-w-screen-md ">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" action="{{ route('users.patch', { id: user.id }, { qs: { _method: 'PATCH' }}) }}" method="POST">
+      <div class="mb-4">
+        <label for="name">
+          Nome:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="Nome" value="{{ auth.user.name }}" />
+      </div>
+      <div class="mb-4">
+        <label for="username">
+          Nome de Usuário:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" placeholder="Nome de Usuário" value="{{ user.username }}" />
+      </div>
+      <div class="mb-4">
+        <label for="email">
+          Email:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="Email" value="{{ user.email }}" />
+      </div>
+      <div class="mb-4">
+        <label for="password">
+          Senha:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" placeholder="Senha"/>
+      </div>
+      </div>
+      <!--<div>
+        <label>
+          Senha:
+        </label>
+        <input type="password" name="password" placeholder="Senha" />
+      </div>-->
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Atualizar
+      </button>
+    </form>
+  </div>
 @end

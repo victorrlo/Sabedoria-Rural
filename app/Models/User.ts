@@ -16,8 +16,11 @@ export default class User extends BaseModel {
   @column()
   public email: string
 
-  @column()
+  @column({ serializeAs: null })
   public password: string
+
+  @column()
+  public rememberMeToken: string | null
 
   @hasMany(() => Post)
   public posts: HasMany<typeof Post>

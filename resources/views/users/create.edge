@@ -5,7 +5,7 @@
   <div class="w-full max-w-screen-md ">
     <h1 class="mb-4 mt-0 text-5xl font-medium leading-tight text-primary text-center">Crie seu Usuário</h1>
 
-    <form action="/users" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
+    <form action="{{route('users.store')}}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
       @!form.label({ nameFor: 'username', name: 'Nome de Usuário'})
       @!form.input({ name: 'username', type: 'text' })
       
