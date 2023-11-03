@@ -1,11 +1,11 @@
-<header class="bg-amber-100 flex flex-row justify-center p-1">
+<header class="bg-indigo-950 flex flex-row justify-center p-1">
   <div class="flex flex-row justify-between max-w-7xl w-full m-2 items-center">
     <div class="flex flex-row font-semibold text-2xl tracking-wide text-primary-900">
-      <a href="{{ route('home.index') }}" class="text-amber-950">Sabedoria Rural</a>
+      <a href="{{ route('home.index') }}" class="text-amber-100">Musicalog</a>
     </div>
     <nav class="flex flex-row gap-2">
       @form.button({ href: route('posts.create') })
-        Escreva
+        Novo post
       @end
       @form.button({ href: route('posts.index') })
         Comece aqui
