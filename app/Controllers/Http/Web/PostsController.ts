@@ -12,21 +12,25 @@ export default class PostsController {
 
   public async store({ request, response }: HttpContextContract) {
     const payload = await request.validate(CreatePostValidator)
-    //criar post ainda tá criando só de um id, depois eu mudo
+    
     //TODO: Pegar o usuario logado
-    const user = await User.findOrFail(1)
-
+    const user = await User.findOrFail(payload.id)
+    
     const postService = new PostService()
     const post = await postService.create(user, payload)
-
-    return response.redirect().toRoute('posts.show', { id: post.id })
+    
+    return response.redirect().toRoute('posts.index', { id: post.id })
   }
 
-  public async show({ params, view }: HttpContextContract) {
-    const post = await Post.findOrFail(params.id)
+  public async show({ params, view }: HttpContextContract) {//listar os posts de um usuário
+    
+    const post = await Post.query().where('user_id', params.id)
+    //const post = await Post.findByOrFail('id_user', params.id)
+   // console.log(post)
 
-    await post.load('user')
-
+    //await post.load('user')
+    
+    
     return view.render('posts/show', { post: post })
   }
 
@@ -34,9 +38,17 @@ export default class PostsController {
 
   public async patch({}: HttpContextContract) {}
 
-  public async index({auth, view }: HttpContextContract) {
-   //await auth.use('web').authenticate()
+  public async index({auth,view, params}: HttpContextContract) {
+   
+    //await post.load('user')
     //console.log(auth.user)
-    return view.render('posts/index')
+    const post = await Post.findOrFail(params.id)
+    await post.load('user')
+    //console.log(post.createdAt)
+    //const post = await Post.query().('user_id', params.id)
+
+    return view.render('posts/index',{ post: post })
   }
+
+  
 }

@@ -7,7 +7,7 @@ import Hash from '@ioc:Adonis/Core/Hash'
 export default class UsersController {
   public async create({ view }: HttpContextContract) {
    
-    return view.render('users/create')
+    //return view.render('users/create')
   }
 
   /*public async login({view}: HttpContextContract){
@@ -33,7 +33,7 @@ export default class UsersController {
     
     //pra pessoa logar automaticamente, logo depois de se cadastrar-> await auth.use('web').login(user)
 
-    return response.redirect().toRoute('users.show', { id: user.id })
+    return response.redirect().toRoute('sessions.create')
     
     
     
