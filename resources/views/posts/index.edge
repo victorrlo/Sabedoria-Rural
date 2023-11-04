@@ -1,8 +1,18 @@
 @layout('layouts/main')
 
 @section('content')
-  LISTANDO POSTS
-  @if(auth.isLoggedIn)
-    <p>E-mail: {{auth.user.email}}</p>
-  @endif
+  <p>LISTANDO POSTS</p>
+ 
+
+ 
+  <ul>
+    <li>{{post.user.username}}</li>
+    <li>{{post.title}}</li>
+    <li>{{post.content}}</li>
+    <li>{{post.createdAt}}</li>
+  </ul>
+  
+  
+  
+  
 @end

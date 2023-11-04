@@ -12,5 +12,11 @@ export default class HomeController {
         return view.render('home/show', {post:post})
     }
 
+    public async create({ view }: HttpContextContract) {
+   
+        return view.render('users/create')
+      }
+
+   
     
 }

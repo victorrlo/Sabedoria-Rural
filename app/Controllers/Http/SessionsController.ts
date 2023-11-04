@@ -14,7 +14,7 @@ export default class SessionsController {
 
         try {
             await auth.use('web').attempt(email,password)
-            response.redirect().toRoute('posts.index')
+            response.redirect().toRoute('home.index')
         } catch (error) {
             return response.redirect().toRoute('sessions.create')
             //return response.badRequest('Invalid')
@@ -25,6 +25,7 @@ export default class SessionsController {
 
     public async delete({ auth, view, request, response }: HttpContextContract) {
         await auth.use('web').logout()
+        
         return response.redirect().toRoute('home.index')
 
         
