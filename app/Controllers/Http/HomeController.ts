@@ -8,7 +8,7 @@ export default class HomeController {
         
         //const post = await Post.all()
        // Pega os 3 post mais recentes criados no BD para exibir na página inicial
-        const post = await Post.query().orderBy('created_at', 'desc').limit(3)
+        const post = await Post.query().orderBy('created_at', 'desc').limit(100)
         return view.render('home/show', {post:post})
     }
 

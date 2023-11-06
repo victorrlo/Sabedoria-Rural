@@ -1,18 +1,14 @@
 @layout('layouts/main')
 
 @section('content')
-  <p>LISTANDO POSTS</p>
- 
-
- 
-  <ul>
-    <li>{{post.user.username}}</li>
-    <li>{{post.title}}</li>
-    <li>{{post.content}}</li>
-    <li>{{post.createdAt}}</li>
-  </ul>
-  
-  
-  
-  
+  <div class="p-10 flex items-center justify-center">
+    <div class="bg-indigo-800 rounded-lg p-8 max-w-md w-full text-white">
+      <ul>
+        <li>{{post.user.username}}</li>
+        <li class="">{{post.title}}</li>
+        <li>{{post.content}}</li>
+        <!-- <li>{{post.createdAt}}</li> -->
+      </ul>
+    </div>
+  </div>
 @end

@@ -8,19 +8,19 @@
       <div class="text-yellow-100 text-7xl font-semibold">
         Musicalize-se!
       </div>
-      <p class="flex justify-center  font-semibold text-yellow-100 text-sm">
+      <p class="flex justify-center font-semibold text-yellow-100 text-sm">
         Você gosta de música? Veio ao lugar certo!
       </p>
     </div>
   </div>
   
-  <div class="flex justify-center flex-col w-full max-w-7xl mx-auto p-10">
-    <!-- loop exibindo os posts (dados vindo do controller)-->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10 max-w-7xl mx-auto">
+    <!-- Loop displaying the posts (data coming from the controller) -->
     @each(p in post)
 
     <div class="post m-2 max-w-sm p-6 bg-indigo-800 rounded-lg shadow-md">
       <a href="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-100 dark:text-white">{{p.title}}</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-100 ">{{p.title}}</h5>
       </a>
       <p class="mb-3 font-normal text-yellow-100 opacity-50">{{p.content.substr(0,100)}}</p>
       <div class="tooltip-text">
@@ -31,10 +31,8 @@
           </svg>
         </a> 
       </div>
-        
-        
     </div>    
     @end
   </div>
 </div>
-@end
+@endsection
