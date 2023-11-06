@@ -5,17 +5,52 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
 </head>
 
-<body class="flex flex-col divide-y divide-gray-900">
-  @include('layouts/partials/header')
+<body class="flex flex-col h-screen overflow-hidden divide-y divide-gray-900">
+  <header class="bg-indigo-950 flex flex-row justify-center p-1">
+    <div class="flex flex-row justify-between max-w-7xl w-full m-2 items-center">
+      <div class="flex flex-row font-semibold text-2xl tracking-wide">
+        <a href="{{ route('home.index') }}" class="text-yellow-100">Musicalog!</a>
+      </div>
+      <nav class="flex flex-row gap-2">      
+        
+        @if(!auth.isLoggedIn)
+          @form.button({ href: route('sessions.create') })
+            Comece agora!
+          @end  
+        @else 
+        @form.button({ href: route('posts.create') })
+          Nova música!
+        @end
+        @form.button({ href: route('posts.show', {id:auth.user.id}) })
+          Suas músicas
+        @end
+          
+          @form.button({ href: route('sessions.delete') })
+          Sair
+          @end  
+  
+          
+          @form.button({ href: route('users.update',{id:auth.user.id}) })
+          Atualizar Cadastro
+          @end  
+        @endif
+      </nav>
+    </div>
+  </header>
 
-  <div class="flex">
+  <div class="flex flex-grow ">
     <div class="bg-indigo-900 flex flex-col divide-y divide-gray-900 w-full gap-10">
 
-      <div class="flex justify-center w-full">
+      <div class="flex-1 justify-center w-full">
         @!section('content')
       </div>
 
-      @include('layouts/partials/footer')
+      <footer class=" bottom-0 bg-indigo-950">
+        <div class=" mx-auto max-w-full py-12">
+          <p class="text-yellow-100 text-center text-xs leading-5">&copy; 2023 DCC/UFRRJ - feito por Victor e Julia</p>
+        </div>
+      </footer>
+      
     </div>
   </div>
 
