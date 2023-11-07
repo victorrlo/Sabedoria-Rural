@@ -2,10 +2,11 @@
 
 @section('content')
 
+<div class="p-10 flex justify-center">
   <div class="w-full max-w-screen-md ">
-    <h1 class="mb-4 mt-0 text-5xl font-medium leading-tight text-primary text-center">Crie seu Post</h1>
+    <h1 class="mb-4 mt-0 text-2xl font-medium leading-tight text-yellow-100 text-center">Crie seu Post</h1>
 
-    <form action="{{ route('posts.store') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
+    <form action="{{ route('posts.store') }}" method="POST" class="bg-indigo-800 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-full">
       <input type="hidden" name='id' value="{{ auth.user.id }}">
       <div class="mb-6">
         @!form.label({ nameFor: 'titulo', name: 'Título'})
@@ -24,4 +25,5 @@
       </div>
     </form>
   </div>
+</div>
 @end

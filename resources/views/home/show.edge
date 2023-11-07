@@ -22,7 +22,7 @@
       <a href="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-100 ">{{p.title}}</h5>
       </a>
-      <p class="mb-3 font-normal text-yellow-100 opacity-50">{{p.content.substr(0,100)}}</p>
+      <p class="mb-3 font-normal text-yellow-100 opacity-50 line-clamp-3 whitespace-break-spaces">{{p.content.substr(0,100)}}</p>
       <div class="tooltip-text">
         <a href="{{route('posts.index', {id:p.id})}}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-center text-yellow-100 shadow-lg bg-indigo-600 rounded-lg hover:scale-105 focus:bg-indigo-700">
           Leia mais
