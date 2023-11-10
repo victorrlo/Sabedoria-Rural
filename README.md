@@ -1,5 +1,5 @@
 # Blog de Música
- Projeto para Programação Web de um blog de compartilhamento de conhecimento musicais ou músicas.
+ Projeto para Programação Web de um blog de compartilhamento de conhecimento musicais ou músicas feitas por compositores independentes.
 
 ## Instalação do Desenvolvimento
 
