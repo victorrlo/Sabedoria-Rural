@@ -60,11 +60,19 @@ export default class UsersController {
   
 
   public async patch({ params, request, response }: HttpContextContract) {
-   
-    const user = await User.findOrFail(params.id)
-   
-    //ver o validator
+
     
+   /* const payload = await request.validate(CreateUserValidator)
+    
+    
+   
+    user.email = payload.email ? payload.email : user.email
+    user.name = payload.name ? payload.name : user.name
+    user.username = payload.username ? payload.username : user.username*/
+   
+  
+    //ver o validator
+    const user = await User.findOrFail(params.id)
     const email = request.input('email', undefined)
     const name = request.input('name', undefined)
     const username = request.input('username', undefined)

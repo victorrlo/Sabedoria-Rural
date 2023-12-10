@@ -38,6 +38,16 @@ export default class PostsController {
 
   public async patch({}: HttpContextContract) {}
 
+  public async delete({params, response}: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    
+    await post.delete()
+
+    return response.redirect().toRoute('posts.show', { id: post.userId })
+
+  
+  }
+
   public async index({auth,view, params}: HttpContextContract) {
    
     //await post.load('user')
@@ -48,6 +58,18 @@ export default class PostsController {
     //const post = await Post.query().('user_id', params.id)
 
     return view.render('posts/index',{ post: post })
+  }
+
+  //like
+  public async like({ params }: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    //console.log(params)
+    const user = await User.findOrFail(params.user)
+    //console.log(user) //já tá pegando o usuário que gostou do post x
+    const service = new PostService()
+    const liked = await service.like(user, post)
+
+    return { id: post.id, liked: liked }
   }
 
   

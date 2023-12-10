@@ -78,6 +78,9 @@ Route.group(() => {
     Route.get('/:id/update', 'PostsController.update').as('update')
     Route.patch('/:id', 'PostsController.patch').as('patch')
     Route.get('/:id', 'PostsController.show').as('show')
+    Route.delete('/:id', 'PostsController.delete').as('delete')
+    //like
+    Route.get('/like/:id/:user', 'PostsController.like').as('like')
   })
     .prefix('/posts')
     .as('posts')
