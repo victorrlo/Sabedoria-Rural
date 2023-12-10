@@ -8,21 +8,23 @@
       <div class="text-yellow-100 text-7xl font-semibold">
         Musicalize-se!
       </div>
-      <p class="flex justify-center font-semibold text-yellow-100 text-sm">
+      <p class="flex justify-center text-center font-semibold text-yellow-100 text-sm">
         Você gosta de música? Veio ao lugar certo!
+        <br>
+        Compartilhe suas composições e permita que outros favoritem suas músicas!
       </p>
     </div>
   </div>
   
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-10 w-4xl min-h-7x1 mx-auto md:grid-cols-1 ">
     <!-- Loop displaying the posts (data coming from the controller) -->
     @each(p in post)
 
-    <div class="post m-2 max-w-sm p-6 bg-indigo-800 rounded-lg shadow-md">
+    <div class="post md:mx-5 h-48 text-start m-2 p-6 bg-indigo-800 rounded-lg shadow-md">
       <a href="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-100 ">{{p.title}}</h5>
+          <h5 class="mb-2 text-2xl line-clamp-1 font-bold tracking-tight text-yellow-100 ">{{p.title}}</h5>
       </a>
-      <p class="mb-3 font-normal text-yellow-100 opacity-50 line-clamp-3 whitespace-break-spaces">{{p.content.substr(0,100)}}</p>
+      <p class="mb-3 font-normal text-yellow-100 opacity-50 line-clamp-1 whitespace-break-spaces">{{p.content.substr(0,100)}}</p>
       <div class="tooltip-text">
         <a href="{{route('posts.index', {id:p.id})}}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-center text-yellow-100 shadow-lg bg-indigo-600 rounded-lg hover:scale-105 focus:bg-indigo-700">
           Leia mais
