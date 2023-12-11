@@ -26,9 +26,16 @@ export default class User extends BaseModel {
   public posts: HasMany<typeof Post>
   //like
   @manyToMany(() => Post, {
-    pivotTable: 'user_post',
+    pivotTable: 'user_post_like',
   })
   public likedPosts: ManyToMany<typeof Post>
+
+  //favourite
+  @manyToMany(() => Post, {
+    pivotTable: 'user_post_favourite',
+  })
+  public favouritesPosts: ManyToMany<typeof Post>
+
 
   @beforeSave()
   public static async hashPassword(user: User) {

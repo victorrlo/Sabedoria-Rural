@@ -81,6 +81,10 @@ Route.group(() => {
     Route.delete('/:id', 'PostsController.delete').as('delete')
     //like
     Route.get('/like/:id/:user', 'PostsController.like').as('like')
+    //favourites
+    Route.get('/showfavourites/:id', 'PostsController.showFavourites').as('showFavourites')
+    Route.get('/favourites/:id/:user', 'PostsController.favourite').as('favourite')
+   // 
   })
     .prefix('/posts')
     .as('posts')

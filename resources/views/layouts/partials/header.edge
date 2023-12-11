@@ -2,7 +2,9 @@
   <div class="flex flex-row justify-between max-w-7xl w-full m-2 items-center">
     <div class="flex flex-row font-semibold text-2xl tracking-wide text-primary-900">
       <a href="{{ route('home.index') }}" class="text-yellow-100">Musicalog!</a>
+      
     </div>
+   
     <nav class="flex flex-row gap-2">      
       
       @if(!auth.isLoggedIn)
@@ -17,14 +19,20 @@
         Suas músicas
       @end
         
-        @form.button({ href: route('sessions.delete') })
-        Sair
-        @end  
+      @form.button({ href: route('sessions.delete') })
+      Sair
+      @end  
 
-        
-        @form.button({ href: route('users.update',{id:auth.user.id}) })
-        Atualizar Cadastro
-        @end  
+      
+
+      @form.button({ href: route('posts.showFavourites', {id:auth.user.id}) })
+      Favoritos
+      @end  
+
+      
+      @form.button({ href: route('users.update',{id:auth.user.id}) })
+      Atualizar Cadastro
+      @end  
       @endif
     </nav>
   </div>

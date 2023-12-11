@@ -19,18 +19,42 @@ export default class Post extends BaseModel {
   public user: BelongsTo<typeof User>
   //like
   @manyToMany(() => User, {
-    pivotTable: 'user_post',
+    pivotTable: 'user_post_like',
   })
   public likedUsers: ManyToMany<typeof User>
+
+  //favourites
+  //like
+  @manyToMany(() => User, {
+    pivotTable: 'user_post_favourite',
+  })
+  public favouritesUsers: ManyToMany<typeof User>
 
   public async liked(user: User) {
     //console.log("aqui começa")
     
     const post: Post = this
     await post.load('likedUsers')
-    //console.log(post)
+
     for await (const likedUser of post.likedUsers) {
+    
       if (user.id === likedUser.id) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  public async favouriteSymbol(user: User) {
+    //console.log("aqui começa")
+    
+    const post: Post = this
+    await post.load('favouritesUsers')
+
+    for await (const favouritesUser of post.favouritesUsers) {
+    
+      if (user.id === favouritesUser.id) {
         return true
       }
     }

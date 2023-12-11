@@ -22,15 +22,19 @@
           @form.button({ href: route('posts.show', {id:auth.user.id}) })
             Suas músicas
           @end
+
+          @form.button({ href: route('posts.showFavourites', {id:auth.user.id}) })
+          Favoritos
+          @end 
             
-            @form.button({ href: route('sessions.delete') })
-            Sair
-            @end  
-    
-            
-            @form.button({ href: route('users.update',{id:auth.user.id}) })
-            Atualizar Cadastro
-            @end  
+          @form.button({ href: route('sessions.delete') })
+          Sair
+          @end  
+  
+          
+          @form.button({ href: route('users.update',{id:auth.user.id}) })
+          Atualizar Cadastro
+          @end  
           @endif
         </nav>
       </div>

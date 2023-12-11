@@ -3,6 +3,7 @@ import User from 'App/Models/User'
 import Post from 'App/Models/Post'
 import PostService from 'App/Services/PostService'
 import CreatePostValidator from 'App/Validators/CreatePostValidator'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class PostsController {
   public async create({ view }: HttpContextContract) {
@@ -38,7 +39,7 @@ export default class PostsController {
 
   public async patch({}: HttpContextContract) {}
 
-  public async delete({params, response}: HttpContextContract) {
+  public async delete({params, response}: HttpContextContract) {//tem um bug todos os usuários podem apagar qualquer um, isso tá acontecendo na página de favoritos, consertar
     const post = await Post.findOrFail(params.id)
     
     await post.delete()
@@ -65,11 +66,40 @@ export default class PostsController {
     const post = await Post.findOrFail(params.id)
     //console.log(params)
     const user = await User.findOrFail(params.user)
+    
     //console.log(user) //já tá pegando o usuário que gostou do post x
     const service = new PostService()
     const liked = await service.like(user, post)
-
+    
+    
     return { id: post.id, liked: liked }
+  }
+
+  //favourites
+  public async favourite({ params }: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    //console.log(params)
+    const user = await User.findOrFail(params.user)
+    
+    //console.log(user) //já tá pegando o usuário que gostou do post x
+    const service = new PostService()
+    const liked = await service.favourite(user, post)
+    
+    
+    return { id: post.id, liked: liked }
+  }
+
+  public async showFavourites({ params, view }: HttpContextContract) {//listar os posts que um usuário favoritou
+    console.log('Entrei no favoritos')
+    const user = await User.findOrFail(params.id)
+
+    //pega os posts que o usuário curtiu
+    const user_posts_favourites = await Database.from('user_post_favourite as a').where('a.user_id', user.id).innerJoin('posts as b','b.id','a.post_id')
+    //console.log(user_posts_favourites)
+
+    
+    
+    return view.render('posts/favourites', { post: user_posts_favourites })
   }
 
   

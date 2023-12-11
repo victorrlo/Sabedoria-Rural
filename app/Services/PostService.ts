@@ -21,13 +21,30 @@ export default class UsersController {
   //like
   public async like(user: User, post: Post) {
     const liked = await post.liked(user)
+    
     //console.log(user)
     if (liked) {
       await user.related('likedPosts').detach([post.id])
-
+      
       return false
     } else {
       await user.related('likedPosts').attach([post.id])
+
+      return true
+    }
+  }
+
+  //favourite
+  public async favourite(user: User, post: Post) {
+    const favourite = await post.favouriteSymbol(user)
+    
+    //console.log(user)
+    if (favourite) {
+      await user.related('favouritesPosts').detach([post.id])
+      
+      return false
+    } else {
+      await user.related('favouritesPosts').attach([post.id])
 
       return true
     }
