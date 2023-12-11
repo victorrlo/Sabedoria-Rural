@@ -39,7 +39,7 @@ export default class PostsController {
 
   public async patch({}: HttpContextContract) {}
 
-  public async delete({params, response}: HttpContextContract) {//tem um bug todos os usuários podem apagar qualquer um, isso tá acontecendo na página de favoritos, consertar
+  public async delete({params, response}: HttpContextContract) {//usuário só vai poder deletar posts na página suas músicas
     const post = await Post.findOrFail(params.id)
     
     await post.delete()
@@ -90,14 +90,11 @@ export default class PostsController {
   }
 
   public async showFavourites({ params, view }: HttpContextContract) {//listar os posts que um usuário favoritou
-    console.log('Entrei no favoritos')
-    const user = await User.findOrFail(params.id)
-
+    //console.log('Entrei no favoritos')
+        
     //pega os posts que o usuário curtiu
-    const user_posts_favourites = await Database.from('user_post_favourite as a').where('a.user_id', user.id).innerJoin('posts as b','b.id','a.post_id')
+    const user_posts_favourites = await Database.from('user_post_favourite as a').where('a.user_id', params.id).innerJoin('posts as b','b.id','a.post_id')
     //console.log(user_posts_favourites)
-
-    
     
     return view.render('posts/favourites', { post: user_posts_favourites })
   }
