@@ -3,19 +3,27 @@
 
 ## Instalação do Desenvolvimento
 
+
+
 1 - Criar a pasta temporária para o banco SQLite
 
 ```console
-mkdir tmp
+node ace migration:run
 ```
 
-2 - Criar o `.env`
+2 - 
 
 ```console
 cp .env.example .env
 ```
 
-3 - Instalar as dependências
+3 - Criar o `.env`
+
+```console
+cp .env.example .env
+```
+
+4 - Instalar as dependências
 
 ```console
 npm install
@@ -24,5 +32,5 @@ npm install
 ## Execução
 
 ```console
-npm ace serve --watch
+node ace serve --watch
 ```
