@@ -8,13 +8,14 @@
 1 - Criar a pasta temporária para o banco SQLite
 
 ```console
-node ace migration:run
+
+mkdir tmp
 ```
 
-2 - 
+2 - Configurar o banco
 
 ```console
-cp .env.example .env
+node ace migration:run
 ```
 
 3 - Criar o `.env`
