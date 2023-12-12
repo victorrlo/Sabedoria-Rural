@@ -7,22 +7,29 @@
 
     <form action="{{route('sessions.store')}}" method="POST" class=" bg-stone-800 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-full">
       <div class="mb-4">
-        <label class="block text-yellow-100 text-sm font-bold mb-2" for="email">
+        @!form.label({ nameFor: 'email', name: 'E-mail'})
+        @!form.input({ name: 'email', type: 'email' })
+        <!--<label class="block text-yellow-100 text-sm font-bold mb-2" for="email">
           E-mail
         </label>
-        <input name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="E-mail">
+        <input name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="E-mail">-->
       </div>
       <div class="mb-6">
-        <label class="block text-yellow-100 text-sm font-bold mb-2" for="password">
+        @!form.label({ nameFor: 'password', name: 'Senha'})
+        @!form.input({ name: 'password', type: 'password' })
+       <!-- <label class="block text-yellow-100 text-sm font-bold mb-2" for="password">
           Senha
         </label>
-        <input name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-        <p class="text-red-500 font-bold text-xs italic">Escolha uma senha.</p>
+        <input name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********">
+        <p class="text-red-500 font-bold text-xs italic">Escolha uma senha.</p>-->
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-stone-600 hover:scale-105 text-yellow-100 font-bold py-2 px-4 rounded-lg focus:bg-stone-700" type="submit">
+        @form.button()
+        Entrar
+        @end
+        <!--<button class="bg-stone-600 hover:scale-105 text-yellow-100 font-bold py-2 px-4 rounded-lg focus:bg-stone-700" type="submit">
           Entrar
-        </button>
+        </button>-->
         <a class="inline-block align-baseline font-bold text-sm text-yellow-100 hover:text-yellow-500" href="#">
           Esqueci minha senha
         </a>
