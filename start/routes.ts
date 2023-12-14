@@ -22,6 +22,11 @@ import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 //Vai pro controller da index pra eu exibir os posts na index rs
+Route.get('/password/forgot', 'PasswordResetController.forgot').as('password.forgot')
+Route.post('/password/send', 'PasswordResetController.send').as('password.send')
+Route.get('/password/reset', 'PasswordResetController.reset').as('password.reset')
+Route.post('/password/store', 'PasswordResetController.store').as('password.store')
+
 Route.get("/", "HomeController.index").as('home.index')
 
 Route.get('/:id/post', 'PostsController.index').as('posts.index').namespace('App/Controllers/Http/Web')
