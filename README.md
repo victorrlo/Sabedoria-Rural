@@ -12,22 +12,22 @@
 mkdir tmp
 ```
 
-2 - Configurar o banco
-
-```console
-node ace migration:run
-```
-
-3 - Criar o `.env`
+2 - Criar o `.env`
 
 ```console
 cp .env.example .env
 ```
 
-4 - Instalar as dependências
+3 - Instalar as dependências
 
 ```console
 npm install
+```
+
+4 - Configurar o banco
+
+```console
+node ace migration:run
 ```
 
 ## Execução
