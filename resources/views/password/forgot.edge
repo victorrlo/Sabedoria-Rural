@@ -2,17 +2,27 @@
 
 @section('content')
 
-<div class="column">
-    <h1>Reset your password</h1>
-    <p>
-        Enter your email below and we'll send you a password reset link
+<div class="flex flex-col items-center justify-center p-10">
+
+
+    <h1 class="mb-4 mt-0 text-2xl font-medium leading-tight text-yellow-100 text-center">
+        Mudar senha
+    </h1>
+    <p class="text-yellow-100 text-center">
+        Coloque seu e-mail abaixo para que possamos enviar um link para que mude sua senha
     </p>
 
-    <form action="POST" action="{{ route('password.send')}}">
-        <input type="email" name="email" placeholder="Enter your email">
-        <button type="submit">
-            Reset Password
+    <form action="POST" action="{{ route('password.send')}}" class="bg-stone-800 shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-full max-w-screen-md">
+        <div class="mb-4 text-yellow-100 font-bold text-sm">
+            <label for="email">
+                E-mail:
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 bg-stone-900 text-yellow-100 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="seu e-mail" />
+        </div>
+        <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-yellow-100 bg-stone-600 shadow-lg rounded-lg hover:scale-105 focus:bg-stone-700 focus:outline-none ">
+            Mudar senha
         </button>
     </form>
 </div>
+
 @endsection

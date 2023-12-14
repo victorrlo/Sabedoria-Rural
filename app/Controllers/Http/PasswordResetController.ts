@@ -12,14 +12,15 @@ export default class PasswordResetController {
     }
 
     public async send({request, response, session}:HttpContextContract) {
+        console.log('aaaaaa')
         const emailSchema = schema.create({
             email:schema.string([rules.email()])
         })
-
+        
         const {email} = await request.validate({schema:emailSchema})
         const user = await User.findBy('email', email)
         const token = await Token.generatePasswordResetToken(user)
-        const resetLink = Route.makeUrl('password.reset', [token])
+        const resetLink = Route.makeUrl('password/reset', [token])
 
         if(user){
             await Mail.sendLater(message=>{
@@ -35,8 +36,8 @@ export default class PasswordResetController {
         return response.redirect().back()
     }
     
-    public async reset({}:HttpContextContract) {
-
+    public async reset({params}:HttpContextContract) {
+        console.log('aaaaa')
     }
 
     public async store({}:HttpContextContract) {
